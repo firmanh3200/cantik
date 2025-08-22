@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Buku Saku Cantik</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Import map (reserved for libs if needed) -->
+  <script type="importmap">
+  {
+    "imports": {}
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <h1>Buku Saku Desa/Kelurahan Cinta Statistik</h1>
+      <div class="header-actions">
+        <button id="themeToggle" aria-pressed="false" title="Toggle theme">Mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="intro">
+      <h2 class="lead"><strong>Penerapan GSBPM dalam Penyusunan Profil Desa/ Kelurahan</strong></h2>
+    </section>
+
+    <!-- Tabs / Accordion -->
+    <section class="kegiatan" id="kegiatan">
+      <!-- Tab buttons (rendered horizontally in landscape, hidden in portrait) -->
+      <div class="tabs" role="tablist" aria-label="Daftar kegiatan" id="tabList">
+        <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" class="tab"><i>Specify Needs</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" class="tab"><i>Design</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" class="tab"><i>Build</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4" class="tab"><i>Collect</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-5" id="tab-5" class="tab"><i>Process</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-6" id="tab-6" class="tab"><i>Analyze</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-7" id="tab-7" class="tab"><i>Disseminate</i></button>
+        <button role="tab" aria-selected="false" aria-controls="panel-8" id="tab-8" class="tab"><i>Evaluate</i></button>
+      </div>
+
+      <!-- Panels -->
+      <div class="panels">
+        <article id="panel-1" role="tabpanel" aria-labelledby="tab-1" class="panel active">
+          <h2>Menentukan Kebutuhan</h2>
+          <p>
+            <ul>
+              <li><b>Identifikasi Pengguna:</b> Siapa yang akan menggunakan data profil desa/kelurahan ini? (Pemerintah desa, BPD, tokoh masyarakat, organisasi sosial, dinas terkait di tingkat kabupaten/kota, peneliti, investor, dll.)</li>
+              <br>
+              <li><b>Identifikasi Kebutuhan Informasi:</b> Informasi apa saja yang dibutuhkan oleh pengguna? (Demografi, pendidikan, kesehatan, mata pencaharian, infrastruktur, potensi ekonomi, masalah sosial, tata ruang, dll.)</li>
+              <br>
+              <li><b>Prioritaskan Kebutuhan:</b> Informasi mana yang paling penting dan mendesak untuk dikumpulkan? (Misalnya, data kesejahteraan keluarga untuk penyaluran bantuan sosial, data potensi pertanian/industri/perdagangan untuk pengembangan ekonomi lokal.)</li>
+              <br>
+              <li><b>Pertimbangkan Regulasi dan Standar:</b> Apakah ada regulasi atau standar yang perlu diikuti dalam pengumpulan dan pengolahan data? (Misalnya, standar data dan metadata dari BPS, Kemendagri, Kementerian Desa PDTT, BKKBN, Komisi Informasi Publik.)</li>
+            </ul>
+            </p>
+            <p class="lead text-center">
+                <a href="https://docs.google.com/spreadsheets/d/1JpVmUdnCuWZHoyeV38xwib9Faa59j_PP_h1Ux5ygKYE/edit?usp=sharing" target="_blank">Contoh Daftar Kebutuhan Data Desa/Kelurahan</a> | <a href="https://peraturan.bpk.go.id/Details/171676/peraturan-bps-no-nomor-4-tahun-2019-tahun-201" target="_blank">Norma, Standar, Prosedur, dan Kriteria Penyelenggaraan Statistik Sektoral</a>
+            </p>
+        </article>
+
+        <article id="panel-2" role="tabpanel" aria-labelledby="tab-2" class="panel">
+          <h2>Merancang</h2>
+          <p>
+            <ul>
+              <li><b>Rancangan Konsep:</b> Buat kerangka konsep data profil desa/kelurahan. Tentukan variabel-variabel yang akan dikumpulkan, definisi operasionalnya, dan bagaimana variabel-variabel tersebut saling berhubungan.</li>
+              <br>
+              <li>
+                <b>Rancangan Pengumpulan Data:</b>
+                <ul>
+                  <li>
+                    <b>Metode Pengumpulan Data:</b> 
+                    <ul>
+                      <li><b>Survei/Kuesioner:</b> Rancangan kuesioner yang terstruktur dan mudah dipahami.</li>
+                      <li><b>Wawancara:</b> Wawancara dengan tokoh masyarakat, perangkat desa, dan kelompok sasaran.</li>
+                      <li><b>Observasi Lapangan:</b> Mengamati langsung kondisi fisik dan sosial desa.</li>
+                      <li><b>Data Sekunder:</b> Memanfaatkan data yang sudah ada dari sumber lain (BPS, dinas terkait, catatan desa, Kemendagri, Kemendesa, Kemendikbud, Kemenag, Big Data).</li>
+                    </ul>
+                  </li>
+                  <br>
+                  <li><b>Populasi dan Sampel:</b> Tentukan populasi sasaran (seluruh warga desa/kelurahan) dan metode pengambilan sampel (jika diperlukan).</li>
+                  <br>
+                  <li><b>Instrumen:</b> Siapkan instrumen pengumpulan data (kuesioner, formulir wawancara, checklist observasi).</li>
+                  <br>
+                  <li><b>Prosedur:</b> Susun prosedur pengumpulan data yang jelas dan sistematis.</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <b>Rancangan Pengolahan Data:</b>
+                <ul>
+                    <li><b>Basis Data:</b> Rancang basis data (misalnya menggunakan spreadsheet atau aplikasi basis data) untuk menyimpan data yang terkumpul.</li>
+                    <br>
+                    <li><b>Kodifikasi dan Klasifikasi:</b> Tentukan kode-kode untuk klasifikasi data (misalnya, kode untuk jenis pekerjaan, tingkat pendidikan).</li>
+                    <br>
+                    <li><b>Validasi:</b> Rancang prosedur validasi data untuk memastikan keakuratan dan konsistensi data.</li>
+                </ul>
+              </li>
+              <br>
+              <li>
+                <b>Rancangan Diseminasi:</b>
+                <ul>
+                    <li><b>Format Laporan:</b> Tentukan format laporan profil desa/kelurahan (misalnya, laporan tertulis, infografis, website).</li>
+                    <br>
+                    <li><b>Target Audiens:</b> Sesuaikan format laporan dengan kebutuhan pengguna.</li>
+                    <br>
+                    <li><b>Saluran Diseminasi:</b> Tentukan cara menyebarluaskan informasi (misalnya, rapat desa, website desa, media sosial, publikasi ke dinas terkait).</li>
+                </ul>
+              </li>
+            </ul>
+            </p>
+            <p>
+                <a href="https://sirusa.web.bps.go.id/metadata/site/index" target="_blank">Sistem Rujukan Statistik</a> | <a href="https://sirusa.web.bps.go.id/metadata/site/search?SearchForm%5Bkategori%5D=kegiatan&SearchForm%5Bkeyword%5D=desa&SearchForm%5Bkategori%5D=kegiatan&SearchForm%5Bkeyword%5D=profil+desa&SearchForm%5Bjudul_kegiatan%5D=&SearchForm%5Btahun_kegiatan%5D=&SearchForm%5Btahun_kegiatan2%5D=&SearchForm%5Bjenis_statistik%5D=&SearchForm%5Bcara_pengumpulan_data%5D=&SearchForm%5Bprodusen_data_province_code%5D=&SearchForm%5Bprodusen_data_name%5D=&SearchForm%5Bprodusen_data_city_code%5D=" target="_blank">Contoh Kegiatan Statistik Desa</a> | <a href="https://sirusa.web.bps.go.id/metadata/kegiatan/53262" target="_blank">Contoh Kegiatan Statistik Kelurahan</a> | <a href="https://indah.bps.go.id/standar-data-statistik-nasional" target="_blank">Standar Data Statistik Nasional</a> | <a href="https://sirusa.web.bps.go.id/metadata/files/Formulir%20Metadata%20Statistik.zip" target="_blank">Formulir Metadata Statistik</a> | <a href="https://sirusa.web.bps.go.id/metadata/files/Peraturan%20Badan%20Pusat%20Statistik%20No.%205%20Tahun%202020%20Petunjuk%20Teknis%20Metadata%20Statistik.pdf" target="_blank">Petunjuk Teknis Metadata Statistik</a> 
+            </p>
+        </article>
+
+        <article id="panel-3" role="tabpanel" aria-labelledby="tab-3" class="panel">
+          <h2>Membangun</h2>
+          <p>
+            <ul>
+                <li><b>Membangun Instrumen:</b> Siapkan instrumen pengumpulan data (kuesioner, formulir wawancara, checklist observasi) berdasarkan rancangan.</li>
+                <br>
+                <li><b>Membangun Basis Data:</b> Buat basis data (misalnya menggunakan spreadsheet atau aplikasi basis data) untuk menyimpan data yang terkumpul.</li>
+                <br>
+                <li><b>Pelatihan:</b> Berikan pelatihan kepada petugas pengumpul data tentang cara menggunakan instrumen, prosedur pengumpulan data, dan pentingnya menjaga kualitas data.</li>
+            </ul>
+          </p>
+          <p>
+            <a href="" target="_blank">Contoh Form Pengumpulan Data</a>
+          </p>
+        </article>
+
+        <article id="panel-4" role="tabpanel" aria-labelledby="tab-4" class="panel">
+          <h2>Mengumpulkan</h2>
+          <p>
+            <ul>
+                <li><b>Pengumpulan Data:</b> Lakukan pengumpulan data di lapangan sesuai dengan prosedur yang telah dirancang.</li>
+                <br>
+                <li><b>Supervisi:</b> Lakukan supervisi terhadap petugas pengumpul data untuk memastikan kualitas data terjaga.</li>
+                <br>
+                <li><b>Manajemen Data:</b> Kelola data yang terkumpul secara terstruktur dan aman.</li>
+            </ul>
+          </p>
+          <p>
+            <a href="https://prodeskel.binapemdes.kemendagri.go.id/mpublik/" target="_blank">Prodeskel Kemendagri</a> | <a href="https://dapodik32.streamlit.app/" target="_blank">Dapodik Kemendikbud</a> | <a href="https://portalpk-siga.bkkbn.go.id/tabulasi" target="_blank">Siga-BKKBN</a> | <a href="http://s.bps.go.id/kcda2024_emis" target="_blank">EMIS Kemenag</a> | <a href="https://sid.kemendesa.go.id/profile" target="_blank">SID Kemendesa</a> | <a href="https://portaldatadesa.jabarprov.go.id/" target="_blank">Portal Data Desa Jabar</a> | <a href="https://docs.google.com/spreadsheets/d/1CmHOrtp780vlmbHic5iwhQ_e2FxhofkF3xqROw4IMxM/edit?usp=sharing" target="_blank">Kode Wilayah</a>
+          </p>
+        </article>
+
+        <article id="panel-5" role="tabpanel" aria-labelledby="tab-5" class="panel">
+          <h2>Pengolahan</h2>
+          <p>
+            <ul>
+                <li><b>Pemeriksaan Data:</b> Periksa data yang terkumpul untuk memastikan kelengkapan dan keakuratan.</li>
+                <br>
+                <li><b>Editing:</b> Memperbaiki isian yang tidak tepat atau tidak wajar.</li>
+                <br>
+                <li><b>Coding:</b> Berikan kode-kode pada data sesuai dengan klasifikasi yang telah ditentukan.</li>
+                <br>
+                <li><b>Input Data:</b> Masukkan data ke dalam basis data.</li>
+                <br>
+                <li><b>Validasi Data:</b> Lakukan validasi data untuk mengidentifikasi dan memperbaiki kesalahan, ketidak-wajaran atau inkonsistensi.</li>
+            </ul>
+          </p>
+        </article>
+
+        <article id="panel-6" role="tabpanel" aria-labelledby="tab-6" class="panel">
+          <h2>Menganalisis</h2>
+          <p>
+            <ul>
+                <li><b>Analisis Deskriptif:</b> Lakukan analisis deskriptif untuk menggambarkan karakteristik desa/kelurahan (misalnya, rata-rata umur penduduk, jumlah penduduk berdasarkan mata pencaharian, tingkat pendidikan).</li>
+                <br>
+                <li><b>Analisis Komparatif:</b> Bandingkan data desa/kelurahan dengan data desa/kelurahan lain atau data tingkat kabupaten/kota.</li>
+                <br>
+                <li><b>Identifikasi Tren:</b> Identifikasi tren perubahan data dari waktu ke waktu.</li>
+            </ul>
+          </p>
+        </article>
+
+        <article id="panel-7" role="tabpanel" aria-labelledby="tab-7" class="panel">
+          <h2>Menyebarluaskan</h2>
+          <p>
+            <ul>
+                <li><b>Penyusunan Laporan:</b> Susun laporan profil desa/kelurahan berdasarkan hasil analisis data.</li>
+                <br>
+                <li><b>Penyebaran Informasi:</b> Sebarkan informasi profil desa/kelurahan kepada pengguna melalui saluran yang telah ditentukan.</li>
+                <br>
+                <li><b>Umpan Balik:</b> Kumpulkan umpan balik dari pengguna untuk perbaikan di masa mendatang.</li>
+            </ul>
+          </p>
+          <p>
+            <a href="" target="_blank">Contoh Web Desa/Kelurahan</a> | <a href="" target="_blank">Contoh Monografi Penduduk Desa</a> | <a href="https://firmanh3200.github.io/adminduk32" target="_blank">Data Adminduk Semester 1 2024</a>
+          </p>
+        </article>
+
+        <article id="panel-8" role="tabpanel" aria-labelledby="tab-8" class="panel">
+          <h2>Mengevaluasi</h2>
+          <p>
+            <ul>
+                <li><b>Evaluasi Proses:</b> Evaluasi seluruh proses pembuatan profil desa/kelurahan, mulai dari perencanaan hingga diseminasi.</li>
+                <br>
+                <li><b>Evaluasi Produk:</b> Evaluasi kualitas dan manfaat data profil desa/kelurahan bagi pengguna.</li>
+                <br>
+                <li><b>Identifikasi Pelajaran:</b> Identifikasi pelajaran yang dapat dipetik untuk perbaikan proses di masa mendatang.</li>
+            </ul>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <small><span id="year"></span> &copy; Tim Pembina Desa Cinta Statistik<br>BPS Provinsi Jawa Barat</small>
+    </div>
+  </footer>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
