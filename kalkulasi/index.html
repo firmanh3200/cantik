@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-bar-chart-fill me-2"></i>Kalkulasi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ahh/index.html" target="_blank">AHH</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hls/index.html" target="_blank">HLS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pdrbpend/index.html" target="_blank">PDRB Pendapatan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pdrbprod/index.html" target="_blank">PDRB Produksi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pdrbx/index.html" target="_blank">PDRB Pengeluaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="regresi/index.html" target="_blank">Regresi Sederhana</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rls/index.html" target="_blank">RLS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <!-- Statistical Calculator Section -->
+    <section id="calculator" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Kalkulator Statistik</h2>
+                <p class="section-subtitle">Menghitung cepat statistik deskriptif</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group mb-3">
+                                <label for="dataInput" class="form-label">Masukkan data Anda (pisahkan dengan koma, desimal menggunakan titik):</label>
+                                <textarea id="dataInput" class="form-control" rows="3" placeholder="Contoh: 5, 12, 18, 23, 45, 67, 32, 19"></textarea>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <button id="calculateStats" class="btn btn-primary w-100">Hitung</button>
+                                </div>
+                                <div class="col">
+                                    <button id="clearStats" class="btn btn-outline-secondary w-100">Hapus</button>
+                                </div>
+                            </div>
+                            <div class="results mt-4">
+                                <h5>Hasil</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-group mb-3">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Mean/ Rata-rata:</span>
+                                                <span id="mean" class="fw-bold">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Median/ Nilai Tengah:</span>
+                                                <span id="median" class="fw-bold">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Modus:</span>
+                                                <span id="mode" class="fw-bold">-</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Range/ Rentang:</span>
+                                                <span id="range" class="fw-bold">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Standar Deviasi/ Simpangan Baku:</span>
+                                                <span id="stdDev" class="fw-bold">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Varians:</span>
+                                                <span id="variance" class="fw-bold">-</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div class="card">
+                <div class="card-header clickable">
+                    <h5>Keterangan</h5>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <p><b>Mean/ Rata-rata</b>: Angka rata-rata dari sekumpulan angka yang Anda masukkan.</p>
+                    <p><b>Median/ Nilai tengah</b>: Angka yang berada tepat di tengah-tengah kumpulan angka setelah diurutkan dari yang terkecil hingga terbesar.</p>
+                    <p><b>Modus</b>: Angka yang paling banyak muncul dalam kumpulan angka yang Anda masukkan.</p>
+                    <p><b>Range/ Rentang</b>: Seberapa lebar atau sempit jarak antara angka terkecil dan terbesar dalam kumpulan angka</p>
+                    <p><b>Standar Deviasi/ Simpangan Baku</b>: Ukuran seberapa tersebar angka-angka dalam kumpulan data dari nilai rata-ratanya (mean). Semakin besar standar deviasinya, semakin lebar penyebarannya.</p>
+                    <p>Standar deviasi kecil: Angka-angkanya cenderung berdekatan dengan rata-ratanya. Misalnya, nilai ulangan hampir semuanya mirip-mirip.</p>
+                    <p>Standar deviasi besar: Angka-angkanya sangat bervariasi, ada yang jauh di atas rata-rata, ada yang jauh di bawah. Misalnya, nilai ulangan ada yang bagus banget, ada yang jelek banget.</p>
+                    <p><b>Varians/ Keragaman</b>: Hampir sama dengan standar deviasi, yaitu mengukur seberapa tersebar angka-angka dari rata-ratanya. Varians adalah kuadrat dari standar deviasi.</p>
+                    <p>Varians adalah langkah awal untuk menghitung standar deviasi. Kita hitung varians dulu, baru diakarkan untuk mendapatkan standar deviasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center text-md-start">
+                    <p class="text-white-50 mb-0">&copy; 2025 Tim Pembina Desa/Kelurahan Cinta Statistik</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

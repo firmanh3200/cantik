@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Harapan Lama Sekolah (HLS)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Harapan Lama Sekolah (HLS) - Sederhana</h1>
+
+        <p>Masukkan data partisipasi sekolah dan angka kematian (perkiraan) untuk menghitung HLS.  <b>Perhitungan ini adalah penyederhanaan dan mungkin tidak akurat.</b></p>
+
+        <div class="input-group">
+            <label for="usiaAwalSekolah">Usia Awal Sekolah:</label>
+            <input type="number" id="usiaAwalSekolah" value="7" min="5" max="10">
+        </div>
+
+        <div class="input-group">
+            <label for="partisipasi1">Partisipasi Sekolah Usia 7-12 (%):</label>
+            <input type="number" id="partisipasi1" placeholder="Misal: 95" min="0" max="100" value="95">
+        </div>
+
+        <div class="input-group">
+            <label for="partisipasi2">Partisipasi Sekolah Usia 13-15 (%):</label>
+            <input type="number" id="partisipasi2" placeholder="Misal: 90" min="0" max="100" value="90">
+        </div>
+
+        <div class="input-group">
+            <label for="partisipasi3">Partisipasi Sekolah Usia 16-18 (%):</label>
+            <input type="number" id="partisipasi3" placeholder="Misal: 80" min="0" max="100" value="80">
+        </div>
+
+        <div class="input-group">
+            <label for="partisipasi4">Partisipasi Sekolah Usia 19-22 (%):</label>
+            <input type="number" id="partisipasi4" placeholder="Misal: 30" min="0" max="100" value="30">
+        </div>
+
+        <div class="input-group">
+            <label for="angkaKematianAnak">Angka Kematian Anak (per 1000 kelahiran):</label>
+            <input type="number" id="angkaKematianAnak" placeholder="Misal: 25" min="0" value="25">
+        </div>
+
+
+        <button id="hitung">Hitung HLS</button>
+
+        <div id="hasil" class="result">
+            Harapan Lama Sekolah: <span id="hls">0</span> Tahun
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

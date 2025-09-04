@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Produk Domestik Regional Bruto (PDRB)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator PDRB - Pendekatan Produksi</h1>
+        <p>Masukkan nilai output dan nilai input antara untuk setiap sektor ekonomi.  <b>Perhitungan ini adalah penyederhanaan dan mungkin tidak akurat.</b></p>
+
+        <h2>Sektor Pertanian, Kehutanan, dan Perikanan</h2>
+        <div class="input-group">
+            <label for="pertanianOutput">Nilai Output Pertanian:</label>
+            <input type="number" id="pertanianOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="pertanianInputAntara">Nilai Input Antara Pertanian:</label>
+            <input type="number" id="pertanianInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Pertambangan dan Penggalian</h2>
+        <div class="input-group">
+            <label for="pertambanganOutput">Nilai Output Pertambangan:</label>
+            <input type="number" id="pertambanganOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="pertambanganInputAntara">Nilai Input Antara Pertambangan:</label>
+            <input type="number" id="pertambanganInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Industri Pengolahan</h2>
+        <div class="input-group">
+            <label for="industriOutput">Nilai Output Industri:</label>
+            <input type="number" id="industriOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="industriInputAntara">Nilai Input Antara Industri:</label>
+            <input type="number" id="industriInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Konstruksi</h2>
+        <div class="input-group">
+            <label for="konstruksiOutput">Nilai Output Konstruksi:</label>
+            <input type="number" id="konstruksiOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="konstruksiInputAntara">Nilai Input Antara Konstruksi:</label>
+            <input type="number" id="konstruksiInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Perdagangan Besar dan Eceran</h2>
+        <div class="input-group">
+            <label for="perdaganganOutput">Nilai Output Perdagangan:</label>
+            <input type="number" id="perdaganganOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="perdaganganInputAntara">Nilai Input Antara Perdagangan:</label>
+            <input type="number" id="perdaganganInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+         <h2>Sektor Transportasi dan Pergudangan</h2>
+        <div class="input-group">
+            <label for="transportasiOutput">Nilai Output Transportasi:</label>
+            <input type="number" id="transportasiOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="transportasiInputAntara">Nilai Input Antara Transportasi:</label>
+            <input type="number" id="transportasiInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Akomodasi dan Makan Minum</h2>
+        <div class="input-group">
+            <label for="akomodasiOutput">Nilai Output Akomodasi:</label>
+            <input type="number" id="akomodasiOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="akomodasiInputAntara">Nilai Input Antara Akomodasi:</label>
+            <input type="number" id="akomodasiInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Informasi dan Komunikasi</h2>
+        <div class="input-group">
+            <label for="informasiOutput">Nilai Output Informasi:</label>
+            <input type="number" id="informasiOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="informasiInputAntara">Nilai Input Antara Informasi:</label>
+            <input type="number" id="informasiInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Jasa Keuangan dan Asuransi</h2>
+        <div class="input-group">
+            <label for="keuanganOutput">Nilai Output Keuangan:</label>
+            <input type="number" id="keuanganOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="keuanganInputAntara">Nilai Input Antara Keuangan:</label>
+            <input type="number" id="keuanganInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <h2>Sektor Jasa-jasa Lainnya</h2>
+        <div class="input-group">
+            <label for="jasaLainOutput">Nilai Output Jasa Lain:</label>
+            <input type="number" id="jasaLainOutput" placeholder="Masukkan Nilai Output" min="0">
+        </div>
+        <div class="input-group">
+            <label for="jasaLainInputAntara">Nilai Input Antara Jasa Lain:</label>
+            <input type="number" id="jasaLainInputAntara" placeholder="Masukkan Nilai Input Antara" min="0">
+        </div>
+
+        <button id="hitung">Hitung PDRB</button>
+
+        <div id="hasil" class="result">
+            PDRB: <span id="pdrb">0</span>
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

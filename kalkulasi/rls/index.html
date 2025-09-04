@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Rata-rata Lama Sekolah (RLS)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Rata-rata Lama Sekolah (RLS)</h1>
+
+        <div class="input-group">
+            <label for="sd">Proporsi Lulusan SD (%):</label>
+            <input type="number" id="sd" placeholder="Masukkan persentase" min="0" max="100">
+        </div>
+
+        <div class="input-group">
+            <label for="smp">Proporsi Lulusan SMP (%):</label>
+            <input type="number" id="smp" placeholder="Masukkan persentase" min="0" max="100">
+        </div>
+
+        <div class="input-group">
+            <label for="sma">Proporsi Lulusan SMA/SMK (%):</label>
+            <input type="number" id="sma" placeholder="Masukkan persentase" min="0" max="100">
+        </div>
+
+        <div class="input-group">
+            <label for="pt">Proporsi Lulusan Perguruan Tinggi (%):</label>
+            <input type="number" id="pt" placeholder="Masukkan persentase" min="0" max="100">
+        </div>
+
+        <button id="hitung">Hitung RLS</button>
+
+        <div id="hasil" class="result">
+            Rata-rata Lama Sekolah: <span id="rls">0</span> Tahun
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

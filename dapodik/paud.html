@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direktori Sekolah Kemendikbud</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .header {
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #5dade2 100%);
+            color: white;
+            border-bottom: 1px solid rgba(0,0,0,.125);
+            padding: 0.75rem 1.25rem;
+            border-top-left-radius: 0.5rem !important;
+            border-top-right-radius: 0.5rem !important;
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 20px 0;
+            width: 100%;
+            border-radius: 3px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        table {
+            width: 100% !important;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .table-striped>tbody>tr:nth-child(odd)>* {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .dataTables_wrapper {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stat-box {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+        
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #2980b9 100%);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9 0%, var(--primary) 100%);
+        }
+        
+        .select2-container--bootstrap-5 .select2-selection {
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header">
+            <h2><i class="fas fa-school me-2"></i> Direktori Sekolah di Bawah Kemendikbud</h2>
+            <div class="warning mt-3">
+                <i class="fas fa-exclamation-triangle me-2"></i> Sumber: <a href="https://dapo.kemdikbud.go.id" target="_blank">https://dapo.kemdikbud.go.id</a>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="wilayah" class="form-label"><i class="fas fa-map-marker-alt me-2"></i> Pilih Wilayah</label>
+                    <select class="form-select" id="wilayah">
+                        <option value="020000">Jawa Barat</option>
+                        <option value="020500">Bogor</option>
+                        <option value="020600">Sukabumi</option>
+                        <option value="020700">Cianjur</option>
+                        <option value="020800">Bandung</option>
+                        <option value="021100">Garut</option>
+                        <option value="021200">Tasikmalaya</option>
+                        <option value="021400">Ciamis</option>
+                        <option value="021500">Kuningan</option>
+                        <option value="021700">Cirebon</option>
+                        <option value="021600">Majalengka</option>
+                        <option value="021000">Sumedang</option>
+                        <option value="021800">Indramayu</option>
+                        <option value="021900">Subang</option>
+                        <option value="022000">Purwakarta</option>
+                        <option value="022100">Karawang</option>
+                        <option value="022200">Bekasi</option>
+                        <option value="022300">Bandung Barat</option>
+                        <option value="022500">Pangandaran</option>
+                        <option value="026100">Kota Bogor</option>
+                        <option value="026200">Kota Sukabumi</option>
+                        <option value="026000">Kota Bandung</option>
+                        <option value="026300">Kota Cirebon</option>
+                        <option value="026500">Kota Bekasi</option>
+                        <option value="026600">Kota Depok</option>
+                        <option value="026700">Kota Cimahi</option>
+                        <option value="026800">Kota Tasikmalaya</option>
+                        <option value="026900">Kota Banjar</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="stat-box">
+                        <div class="stat-number" id="total-sekolah">0</div>
+                        <div class="stat-label">Total Sekolah</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="paudHeading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link text-white text-decoration-none" data-bs-toggle="collapse" data-bs-target="#paudCollapse" aria-expanded="true" aria-controls="paudCollapse">
+                        <i class="fas fa-child me-2"></i> PAUD
+                    </button>
+                </h5>
+            </div>
+
+            <div id="paudCollapse" class="collapse show" aria-labelledby="paudHeading">
+                <div class="card-body">
+                    <div class="warning" id="paudWarning">
+                        <i class="fas fa-info-circle me-2"></i> Sumber: referensi.data.kemdikbud.go.id, Kondisi: <span id="tanggal-hari-ini"></span>
+                    </div>
+                    
+                    <div id="jawa-barat-container" style="display: none;">
+                        <div class="border p-3 mb-3 rounded">
+                            <h6><i class="fas fa-list me-2"></i> Data PAUD Jawa Barat</h6>
+                            <div class="table-responsive">
+                                <table id="table-paud-jabar" class="table table-striped table-bordered" style="width:100%"></table>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                    
+                    <div id="wilayah-container" style="display: none;">
+                        <div class="warning" id="wilayah-warning"></div>
+                        <div class="table-responsive">
+                            <table id="table-paud-wilayah" class="table table-striped table-bordered" style="width:100%"></table>
+                        </div>
+                        <div class="divider"></div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="kecamatan" class="form-label"><i class="fas fa-map-marked-alt me-2"></i> Pilih Kecamatan</label>
+                                <select class="form-select" id="kecamatan">
+                                    <option value="">Pilih Kecamatan</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div id="kecamatan-container" style="display: none;">
+                            <div class="table-responsive">
+                                <table id="table-paud-kecamatan" class="table table-striped table-bordered" style="width:100%"></table>
+                            </div>
+                            
+                            <div class="row mb-3 mt-3">
+                                <div class="col-md-6">
+                                    <label for="desa" class="form-label"><i class="fas fa-map-pin me-2"></i> Pilih Desa/Kelurahan</label>
+                                    <select class="form-select" id="desa">
+                                        <option value="">Pilih Desa/Kelurahan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="desa-container" style="display: none;">
+                                <div class="table-responsive">
+                                    <table id="table-paud-desa" class="table table-striped table-bordered" style="width:100%"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3">Memuat data dari Kemendikbud...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Direktori Sekolah Kemendikbud &copy; 2023</p>
+            <p>Data bersumber dari <a href="https://dapo.kemdikbud.go.id" target="_blank">Direktorat Jenderal PAUD, Pendidikan Dasar, dan Menengah</a></p>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Set tanggal hari ini
+            const today = new Date();
+            const formattedDate = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth()+1).toString().padStart(2, '0')}-${today.getFullYear()}`;
+            $('#tanggal-hari-ini').text(formattedDate);
+            
+            // Inisialisasi DataTables
+            let tableJabar = $('#table-paud-jabar').DataTable({
+                responsive: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                paging: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
+                }
+            });
+            
+            let tableWilayah = $('#table-paud-wilayah').DataTable({
+                responsive: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                paging: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
+                }
+            });
+            
+            let tableKecamatan = $('#table-paud-kecamatan').DataTable({
+                responsive: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                paging: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
+                }
+            });
+            
+            let tableDesa = $('#table-paud-desa').DataTable({
+                responsive: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                paging: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
+                },
+                columns: [
+                    { title: "Kelurahan" },
+                    { title: "Nama Satuan Pendidikan" },
+                    { title: "Status" },
+                    { title: "Alamat" },
+                    { title: "NPSN" }
+                ]
+            });
+            
+            // Fungsi untuk mengambil data dari API dengan CORS proxy
+            async function fetchData(url) {
+                try {
+                    // Gunakan CORS proxy untuk menghindari masalah CORS
+                    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                    const response = await fetch(proxyUrl + url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                    return await response.text();
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                    throw error;
+                }
+            }
+            
+            // Fungsi untuk parsing HTML table ke DataTables
+            function parseHTMLTable(html, tableInstance) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const table = doc.querySelector('table');
+                
+                if (!table) {
+                    throw new Error('No table found in the response');
+                }
+                
+                // Clear table
+                tableInstance.clear();
+                
+                // Extract headers
+                const headers = [];
+                table.querySelectorAll('thead th').forEach(header => {
+                    headers.push(header.textContent.trim());
+                });
+                
+                // Extract rows
+                const rows = [];
+                table.querySelectorAll('tbody tr').forEach(row => {
+                    const rowData = [];
+                    row.querySelectorAll('td').forEach(cell => {
+                        rowData.push(cell.textContent.trim());
+                    });
+                    rows.push(rowData);
+                });
+                
+                // Update table headers
+                tableInstance.clear().draw();
+                tableInstance.columns().remove();
+                tableInstance.destroy();
+                
+                // Reinitialize table with new headers
+                const newTable = tableInstance.table().DataTable({
+                    responsive: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    paging: true,
+                    data: rows,
+                    columns: headers.map(header => ({ title: header })),
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.1/i18n/id.json'
+                    }
+                });
+                
+                // Update total sekolah count
+                $('#total-sekolah').text(rows.length);
+                
+                return newTable;
+            }
+            
+            // Event handler untuk perubahan wilayah
+            $('#wilayah').change(function() {
+                const kode = $(this).val();
+                const kodekab = kode.substring(0, 4);
+                const namaWilayah = $('#wilayah option:selected').text();
+                
+                // Tampilkan loading
+                $('#loading').show();
+                $('#jawa-barat-container').hide();
+                $('#wilayah-container').hide();
+                $('#kecamatan-container').hide();
+                $('#desa-container').hide();
+                
+                // Reset dropdown
+                $('#kecamatan').html('<option value="">Pilih Kecamatan</option>');
+                $('#desa').html('<option value="">Pilih Desa/Kelurahan</option>');
+                
+                // Clear tables
+                tableWilayah.clear().draw();
+                tableKecamatan.clear().draw();
+                tableDesa.clear().draw();
+                
+                if (kode === '020000') {
+                    // Jawa Barat
+                    loadDataJawaBarat();
+                } else {
+                    // Wilayah lainnya
+                    $('#wilayah-warning').html(`<i class="fas fa-map-marker-alt me-2"></i> DIREKTORI PAUD DI ${namaWilayah}`);
+                    loadDataWilayah(kode, kodekab, namaWilayah);
+                }
+            });
+            
+            // Event handler untuk perubahan kecamatan
+            $('#kecamatan').change(function() {
+                const kodekec = $(this).val();
+                const kodekab = $('#wilayah').val().substring(0, 4);
+                
+                if (kodekec) {
+                    $('#loading').show();
+                    loadDataKecamatan(kodekab, kodekec);
+                } else {
+                    $('#kecamatan-container').hide();
+                    $('#desa-container').hide();
+                }
+            });
+            
+            // Event handler untuk perubahan desa
+            $('#desa').change(function() {
+                const desa = $(this).val();
+                
+                if (desa) {
+                    filterDataByDesa(desa);
+                } else {
+                    $('#desa-container').hide();
+                }
+            });
+            
+            // Fungsi untuk memuat data Jawa Barat
+            async function loadDataJawaBarat() {
+                try {
+                    // Ambil data dari API
+                    const url = 'https://referensi.data.kemdikbud.go.id/pendidikan/paud';
+                    const html = await fetchData(url);
+                    
+                    // Parse dan tampilkan data
+                    tableJabar = parseHTMLTable(html, tableJabar);
+                    
+                    // Ambil data detail
+                    const url2 = 'https://referensi.data.kemdikbud.go.id/pendidikan/paud/020000/1/all/all/all';
+                    const html2 = await fetchData(url2);
+                    
+                    // Parse dan tampilkan data detail
+                    parseHTMLTable(html2, tableJabar);
+                    
+                    // Sembunyikan loading dan tampilkan container
+                    $('#loading').hide();
+                    $('#jawa-barat-container').show();
+                } catch (error) {
+                    $('#loading').html('<div class="alert alert-danger">Gagal memuat data. Silakan coba lagi.</div>');
+                    console.error('Error loading Jawa Barat data:', error);
+                }
+            }
+            
+            // Fungsi untuk memuat data wilayah
+            async function loadDataWilayah(kode, kodekab, namaWilayah) {
+                try {
+                    // Ambil data dari API
+                    const url = `https://referensi.data.kemdikbud.go.id/pendidikan/paud/${kode}/2`;
+                    const html = await fetchData(url);
+                    
+                    // Parse dan tampilkan data
+                    tableWilayah = parseHTMLTable(html, tableWilayah);
+                    
+                    // Load data kecamatan
+                    await loadKecamatanOptions(kodekab);
+                    
+                    // Sembunyikan loading dan tampilkan container
+                    $('#loading').hide();
+                    $('#wilayah-container').show();
+                } catch (error) {
+                    $('#loading').html('<div class="alert alert-danger">Gagal memuat data. Silakan coba lagi.</div>');
+                    console.error('Error loading wilayah data:', error);
+                }
+            }
+            
+            // Fungsi untuk memuat opsi kecamatan
+            async function loadKecamatanOptions(kodekab) {
+                try {
+                    // Load data kecamatan dari GitHub (karena tidak ada API langsung)
+                    const response = await fetch('https://raw.githubusercontent.com/firmanh3200/makro32/refs/heads/main/dapodik/kodedikbud.csv');
+                    const csvData = await response.text();
+                    
+                    // Parse CSV data
+                    const lines = csvData.split('\n');
+                    const kecamatanOptions = [];
+                    
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i];
+                        if (line) {
+                            const [kode, namakec, kodekec] = line.split(',');
+                            if (kode === kodekab) {
+                                kecamatanOptions.push({ kodekec, namakec });
+                            }
+                        }
+                    }
+                    
+                    // Isi dropdown kecamatan
+                    kecamatanOptions.forEach(kec => {
+                        $('#kecamatan').append(`<option value="${kec.kodekec}">${kec.namakec}</option>`);
+                    });
+                } catch (error) {
+                    console.error('Error loading kecamatan options:', error);
+                    // Fallback data jika gagal load dari GitHub
+                    const fallbackData = [
+                        { kodekec: "0101", namakec: "Kecamatan A" },
+                        { kodekec: "0102", namakec: "Kecamatan B" },
+                        { kodekec: "0103", namakec: "Kecamatan C" }
+                    ];
+                    
+                    fallbackData.forEach(kec => {
+                        $('#kecamatan').append(`<option value="${kec.kodekec}">${kec.namakec}</option>`);
+                    });
+                }
+            }
+            
+            // Fungsi untuk memuat data kecamatan
+            async function loadDataKecamatan(kodekab, kodekec) {
+                try {
+                    // Ambil data dari API
+                    const url = `https://referensi.data.kemdikbud.go.id/pendidikan/paud/${kodekab}${kodekec}/3`;
+                    const html = await fetchData(url);
+                    
+                    // Parse dan tampilkan data
+                    tableKecamatan = parseHTMLTable(html, tableKecamatan);
+                    
+                    // Ekstrak daftar desa dari data
+                    const desaList = [...new Set(tableKecamatan.data().toArray().map(row => row[0]))];
+                    
+                    // Isi dropdown desa
+                    $('#desa').html('<option value="">Pilih Desa/Kelurahan</option>');
+                    desaList.forEach(desa => {
+                        $('#desa').append(`<option value="${desa}">${desa}</option>`);
+                    });
+                    
+                    // Sembunyikan loading dan tampilkan container
+                    $('#loading').hide();
+                    $('#kecamatan-container').show();
+                } catch (error) {
+                    $('#loading').html('<div class="alert alert-danger">Gagal memuat data. Silakan coba lagi.</div>');
+                    console.error('Error loading kecamatan data:', error);
+                }
+            }
+            
+            // Fungsi untuk memfilter data berdasarkan desa
+            function filterDataByDesa(desa) {
+                // Dapatkan semua data dari tabel kecamatan
+                const allData = tableKecamatan.data().toArray();
+                
+                // Filter data berdasarkan desa
+                const filteredData = allData.filter(row => row[0] === desa);
+                
+                // Clear dan isi tabel desa
+                tableDesa.clear();
+                filteredData.forEach(row => {
+                    tableDesa.row.add([row[0], row[1], row[2], row[3], row[4]]);
+                });
+                tableDesa.draw();
+                
+                // Tampilkan container
+                $('#desa-container').show();
+            }
+            
+            // Trigger perubahan awal pada wilayah
+            $('#wilayah').trigger('change');
+        });
+    </script>
+</body>
+</html>

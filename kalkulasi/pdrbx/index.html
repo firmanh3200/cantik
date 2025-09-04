@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator PDRB Desa/Kelurahan - Pendekatan Pengeluaran</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator PDRB Desa/Kelurahan - Pendekatan Pengeluaran (Sangat Sederhana)</h1>
+        <p>Masukkan data pengeluaran di tingkat desa/kelurahan. <b>Perhitungan ini sangat disederhanakan dan mungkin tidak akurat.</b></p>
+
+        <div class="input-group">
+            <label for="konsumsiRumahTangga">Konsumsi Rumah Tangga:</label>
+            <input type="number" id="konsumsiRumahTangga" placeholder="Masukkan Konsumsi Rumah Tangga" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="konsumsiPemerintah">Konsumsi Pemerintah Desa/Kelurahan:</label>
+            <input type="number" id="konsumsiPemerintah" placeholder="Masukkan Konsumsi Pemerintah" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="investasi">Investasi (Pembentukan Modal Tetap Bruto):</label>
+            <input type="number" id="investasi" placeholder="Masukkan Investasi" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="perubahanInventori">Perubahan Inventori (Stok Barang):</label>
+            <input type="number" id="perubahanInventori" placeholder="Masukkan Perubahan Inventori" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="ekspor">Ekspor (dari Desa/Kelurahan):</label>
+            <input type="number" id="ekspor" placeholder="Masukkan Ekspor" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="impor">Impor (ke Desa/Kelurahan):</label>
+            <input type="number" id="impor" placeholder="Masukkan Impor" min="0">
+        </div>
+
+        <button id="hitung">Hitung PDRB Desa/Kelurahan</button>
+
+        <div id="hasil" class="result">
+            PDRB Desa/Kelurahan: <span id="pdrb">0</span>
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

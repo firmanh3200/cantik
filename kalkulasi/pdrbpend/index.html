@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Produk Domestik Regional Bruto (PDRB)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator PDRB - Pendekatan Pendapatan</h1>
+        <p>Masukkan data pendapatan untuk menghitung PDRB. <b>Perhitungan ini adalah penyederhanaan dan mungkin tidak akurat.</b></p>
+
+        <div class="input-group">
+            <label for="kompensasi">Kompensasi Pekerja:</label>
+            <input type="number" id="kompensasi" placeholder="Masukkan Kompensasi Pekerja" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="surplusUsaha">Surplus Usaha Bruto (Gross Operating Surplus):</label>
+            <input type="number" id="surplusUsaha" placeholder="Masukkan Surplus Usaha Bruto" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="pajakProduksi">Pajak Produksi dan Impor:</label>
+            <input type="number" id="pajakProduksi" placeholder="Masukkan Pajak Produksi dan Impor" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="subsidi">Subsidi:</label>
+            <input type="number" id="subsidi" placeholder="Masukkan Subsidi" min="0">
+        </div>
+
+        <button id="hitung">Hitung PDRB</button>
+
+        <div id="hasil" class="result">
+            PDRB: <span id="pdrb">0</span>
+        </div>
+
+        <div id="error-message" class="error"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
